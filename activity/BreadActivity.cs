@@ -1,17 +1,23 @@
 ﻿using Android.App;
 using Android.Content;
+using Android.Nfc;
 using Android.OS;
 using Android.Runtime;
+using Android.Util;
 using Android.Views;
 using Android.Widget;
+using Google.Android.Material.Button;
+using Google.Android.Material.TextField;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace wtf.activity
 {
-    [Activity(Label = "MenuActivity")]
+    [Activity(Label = "MenuActivity", MainLauncher = true)]
     public class BreadActivity : Activity
     {
         Button breadbtn, cakebtn, drinkbtn;
@@ -30,17 +36,20 @@ namespace wtf.activity
 
         private void Drinkbtn_Click(object sender, EventArgs e)
         {
-            StartActivity(new Intent(Application.Context, typeof(DrinkActivity)));
+            Intent create = new Intent(this, typeof(DrinkActivity));
+            StartActivity(create);
         }
 
         private void Cakebtn_Click(object sender, EventArgs e)
         {
-            StartActivity(new Intent(Application.Context, typeof(CakeActivity)));
+            Intent create = new Intent(this, typeof(CakeActivity));
+            StartActivity(create);
         }
 
         private void Breadbtn_Click(object sender, EventArgs e)
         {
-            StartActivity(new Intent(Application.Context, typeof(BreadActivity)));
+            Intent create = new Intent(this, typeof(BreadActivity));
+            StartActivity(create);
         }
     }
 }

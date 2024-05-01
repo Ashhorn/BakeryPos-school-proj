@@ -16,24 +16,24 @@
         android:minWidth="25px"
         android:minHeight="25px"
         android:orientation="horizontal"
-        android:background="@color/purple">
+        android:background="@android:color/holo_purple">
         <Button
             android:text="Bread"
             android:layout_width="100dp"
             android:layout_height="42.9dp"
-            android:id="@+id/button1" />
+            android:id="@+id/button1"/>
         <Button
             android:text="Cake"
             android:layout_width="100dp"
             android:layout_height="42.9dp"
             android:layout_marginLeft="20dp"
-            android:id="@+id/button2" />
+            android:id="@+id/button2"/>
         <Button
             android:text="Drinks"
             android:layout_width="100dp"
             android:layout_height="42.9dp"
             android:layout_marginLeft="20dp"
-            android:id="@+id/button3" />
+            android:id="@+id/button3"/>
     </LinearLayout>
      <RelativeLayout
         android:layout_width="match_parent"
@@ -124,7 +124,6 @@
                     android:minHeight="150dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="dp"
                     app:cardElevation="11dp"
                     app:cardCornerRadius="20dp"
                     app:cardUseCompatPadding="true"
@@ -189,7 +188,6 @@
                     android:minHeight="150dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="dp"
                     app:cardElevation="11dp"
                     app:cardCornerRadius="20dp"
                     app:cardUseCompatPadding="true"
@@ -254,7 +252,6 @@
                     android:minHeight="150dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="dp"
                     app:cardElevation="11dp"
                     app:cardCornerRadius="20dp"
                     app:cardUseCompatPadding="true"
@@ -319,7 +316,6 @@
                     android:minHeight="150dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="dp"
                     app:cardElevation="11dp"
                     app:cardCornerRadius="20dp"
                     app:cardUseCompatPadding="true"
@@ -384,7 +380,6 @@
                     android:minHeight="150dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="dp"
                     app:cardElevation="11dp"
                     app:cardCornerRadius="20dp"
                     app:cardUseCompatPadding="true"

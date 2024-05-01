@@ -18,7 +18,7 @@ namespace wtf.activity
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.BreadLayout);
+            SetContentView(Resource.Layout.DrinkLayout);
             breadbtn = FindViewById<Button>(Resource.Id.button1);
             cakebtn = FindViewById<Button>(Resource.Id.button2);
             drinkbtn = FindViewById<Button>(Resource.Id.button3);

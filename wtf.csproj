@@ -63,7 +63,6 @@
     <Compile Include="activity\BreadActivity.cs" />
     <Compile Include="activity\CakeActivity.cs" />
     <Compile Include="activity\DrinkActivity.cs" />
-    <Compile Include="activity\splashscreen.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -128,11 +127,6 @@
     <AndroidResource Include="Resources\drawable\ubecake.jpg" />
     <AndroidResource Include="Resources\drawable\ubepan.jpg" />
     <AndroidResource Include="Resources\drawable\water.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\splashscreenLayout.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
