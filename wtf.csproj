@@ -63,6 +63,8 @@
     <Compile Include="activity\BreadActivity.cs" />
     <Compile Include="activity\CakeActivity.cs" />
     <Compile Include="activity\DrinkActivity.cs" />
+    <Compile Include="activity\splashscreen.cs" />
+    <Compile Include="activity\yeabro.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -104,6 +106,9 @@
     <AndroidResource Include="Resources\layout\RecieptLayout.xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.3</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.AndroidX.AppCompat" Version="1.2.0.5" />
     <PackageReference Include="Xamarin.Google.Android.Material" Version="1.0.0.1" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
@@ -127,6 +132,11 @@
     <AndroidResource Include="Resources\drawable\ubecake.jpg" />
     <AndroidResource Include="Resources\drawable\ubepan.jpg" />
     <AndroidResource Include="Resources\drawable\water.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\splashscreen.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

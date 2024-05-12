@@ -7,36 +7,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/backgroundmenu">
+    <LinearLayout
+        android:layout_width="5000.0dp"
+        android:layout_height="48.0dp"
+        android:gravity="center"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout3"
+        android:background="@android:color/holo_purple"
+        >
+        <Button
+            android:text="Back"
+            android:layout_width="100dp"
+            android:layout_height="42.9dp"
+            android:id="@+id/button1" />
+        <Button
+            android:text="Print"
+            android:layout_width="100dp"
+            android:layout_height="42.9dp"
+            android:layout_marginLeft="120dp"
+            android:id="@+id/button3" />
+           
+    </LinearLayout>
      <TextView
            android:layout_width="match_parent"
            android:layout_height="match_parent"
-           android:text="RECIEPT"        
+           android:text="RECIEPT" 
+           android:layout_below="@+id/linearLayout3"
            android:gravity="center_horizontal"
-           android:textSize="50dp">
+           android:textSize="30dp">
     </TextView>
-    <TableLayout
-        android:id="@+id/tableLayoutreciept"
-        android:layout_width="500dp"
-        android:layout_height="500dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:layout_marginBottom="200dp"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="700dp"
-            android:gravity="bottom"
-            android:orientation="vertical">
-             
-            <Button
-                android:layout_width="200dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:id="@+id/buttonprint"
-                android:text="PRINT RECIEPT"
-                android:textSize="20dp"/>
-
-         </LinearLayout>
-
-
+   
 
 </RelativeLayout>

@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/backgroundmenu"
-    android:paddingHorizontal="15dp"
+    
     >
     <LinearLayout
         android:layout_width="5000.0dp"
@@ -16,6 +16,7 @@
         android:minWidth="25px"
         android:minHeight="25px"
         android:orientation="horizontal"
+        android:id="@+id/linearLayout3"
         android:background="@android:color/holo_purple">
         <Button
             android:text="Bread"
@@ -37,18 +38,19 @@
     </LinearLayout>
      <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="600.0dp"
+        android:layout_height="match_parent"
         android:gravity="center"
-        android:layout_marginBottom="150dp"
+        android:layout_marginBottom="80dp"
         android:id="@+id/relativeLayout2"
+        android:layout_below="@+id/linearLayout3"
         android:padding="1dp">
         <ScrollView
             android:minWidth="25px"
             android:minHeight="25px"
-            android:layout_width="371.4dp"
-            android:layout_height="526.3dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:id="@+id/scrollView1"
-            android:layout_marginBottom="-10dp">
+            >
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -93,7 +95,7 @@
                      android:layout_width="match_parent"
                      android:layout_height="match_parent"
                      android:text="75p"        
-                     android:layout_marginLeft="120dp"
+                     android:layout_marginLeft="100dp"
                      android:gravity="center"
                      android:textSize="20dp"/>
                     <Button
@@ -150,14 +152,14 @@
                      android:layout_width="match_parent"
                      android:layout_height="match_parent"
                      android:text="Cheese Bread"
-                     android:layout_marginLeft="170dp"
+                     android:layout_marginLeft="165dp"
                      android:gravity="top"
                      android:textSize="20dp"/>
                     <TextView
                      android:layout_width="match_parent"
                      android:layout_height="match_parent"
                      android:text="7p"        
-                     android:layout_marginLeft="120dp"
+                     android:layout_marginLeft="100dp"
                      android:gravity="center"
                      android:textSize="20dp"/>
                     <Button
@@ -221,7 +223,7 @@
                      android:layout_width="match_parent"
                      android:layout_height="match_parent"
                      android:text="10p"        
-                     android:layout_marginLeft="120dp"
+                     android:layout_marginLeft="100dp"
                      android:gravity="center"
                      android:textSize="20dp"/>
                     <Button
@@ -278,14 +280,14 @@
                      android:layout_width="match_parent"
                      android:layout_height="match_parent"
                      android:text="Spanish Bread"
-                     android:layout_marginLeft="160dp"
+                     android:layout_marginLeft="165dp"
                      android:gravity="top"
                      android:textSize="20dp"/>
                     <TextView
                      android:layout_width="match_parent"
                      android:layout_height="match_parent"
                      android:text="5p"        
-                     android:layout_marginLeft="120dp"
+                     android:layout_marginLeft="100dp"
                      android:gravity="center"
                      android:textSize="20dp"/>
                     <Button
@@ -349,7 +351,7 @@
                      android:layout_width="match_parent"
                      android:layout_height="match_parent"
                      android:text="15p"        
-                     android:layout_marginLeft="120dp"
+                     android:layout_marginLeft="100dp"
                      android:gravity="center"
                      android:textSize="20dp"/>
                     <Button
@@ -413,7 +415,7 @@
                      android:layout_width="match_parent"
                      android:layout_height="match_parent"
                      android:text="10p"        
-                     android:layout_marginLeft="120dp"
+                     android:layout_marginLeft="100dp"
                      android:gravity="center"
                      android:textSize="20dp"/>
                     <Button
@@ -442,50 +444,39 @@
             </LinearLayout>
         </ScrollView>
     </RelativeLayout>
-    <RelativeLayout
+     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="bottom">
         <androidx.cardview.widget.CardView
               android:layout_width="match_parent"
-              android:layout_height="230dp"
-              app:cardBackgroundColor="@android:color/holo_blue_light">
+              android:layout_height="80dp"
+              app:cardBackgroundColor="@android:color/holo_purple">
 
               <TextView
                      android:layout_width="match_parent"
                      android:layout_height="match_parent"
-                     android:text="Orders"        
-                     android:gravity="left"
-                     android:textSize="20dp"
-                     android:layout_marginLeft="20dp"/>
-              <TextView
-                     android:layout_width="match_parent"
-                     android:layout_height="match_parent"
-                     android:text="Quantity"        
-                     android:gravity="left"
-                     android:textSize="20dp"
-                     android:layout_marginLeft="220dp"/>
-              <TextView
-                     android:layout_width="match_parent"
-                     android:layout_height="match_parent"
-                     android:text="Price"        
-                     android:gravity="left"
-                     android:textSize="20dp"
-                     android:layout_marginLeft="320dp"/>
-              <TextView
-                     android:layout_width="match_parent"
-                     android:layout_height="match_parent"
                      android:text="Total:"        
-                     android:gravity="center"
+                     android:gravity="left"
                      android:textSize="20dp"
-                     android:layout_marginBottom="-190dp"
-                     android:layout_marginLeft="150dp"/>
-              <Button
-                     android:text="Done"
-                     android:layout_width="100dp"
-                     android:layout_height="42.9dp"
-                     android:layout_marginLeft="20dp"
+                     android:paddingTop="25dp"
+               
+                     android:layout_marginLeft="20dp"/>
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:text="0"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="75dp"
+                android:id="@+id/totaltxt"/>
+               <Button
+                     android:text="Reciept"
+                     android:layout_width="120dp"
+                     android:layout_height="40dp"
+                     android:layout_marginLeft="270dp"
                      android:layout_gravity="bottom"
+                     android:layout_marginHorizontal="250dp"
+                     android:layout_marginVertical="20dp"
                      android:id="@+id/buttonDone" />
         </androidx.cardview.widget.CardView> 
     </RelativeLayout>
