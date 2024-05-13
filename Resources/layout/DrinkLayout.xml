@@ -374,7 +374,7 @@
                      android:layout_marginLeft="215dp"
                      android:id="@+id/textquantityc2"/>
                     <Button
-                        android:id="@+id/minusm" 
+                        android:id="@+id/minusc2" 
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_gravity="bottom"

@@ -18,7 +18,7 @@ using Newtonsoft.Json;
 
 namespace wtf.activity
 {
-    [Activity(Label = "PoS", MainLauncher =true)]
+    [Activity(Label = "PoS", MainLauncher =false)]
     public class BreadActivity : Activity
     {
         int ccount = 0;
@@ -34,7 +34,20 @@ namespace wtf.activity
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            // Check if an instance of BreadActivity is already running
+            if (!IsTaskRoot && Intent.HasCategory(Intent.CategoryLauncher) && Intent.Action == Intent.ActionMain)
+            {
+                // Bring the existing instance of BreadActivity to the foreground
+                Intent intent = new Intent(this, typeof(BreadActivity));
+                intent.AddFlags(ActivityFlags.SingleTop | ActivityFlags.ReorderToFront);
+                StartActivity(intent);
+                Finish();
+                return;
+            }
+
+            // Continue with initializing your activity
             SetContentView(Resource.Layout.BreadLayout);
+
             breadbtn = FindViewById<Button>(Resource.Id.button1);
             cakebtn = FindViewById<Button>(Resource.Id.button2);
             drinkbtn = FindViewById<Button>(Resource.Id.button3);
@@ -93,6 +106,7 @@ namespace wtf.activity
             if (jsonString != null)
             {
                 totalprice = JsonConvert.DeserializeObject<yeabro>(jsonString);
+                bcount = totalprice.txtqtybaguette;
                 total = totalprice.totalp; // Directly assign total price
             }
         }
@@ -227,7 +241,6 @@ namespace wtf.activity
         private void Drinkbtn_Click(object sender, EventArgs e)
         {
             Intent intent = new Intent(this, typeof(DrinkActivity));
-            intent.AddFlags(ActivityFlags.SingleTop | ActivityFlags.ReorderToFront);
             yeabro yeabro = new yeabro()
             {
                 txtqtymeat = mcount,
@@ -253,8 +266,7 @@ namespace wtf.activity
 
         private void Breadbtn_Click(object sender, EventArgs e)
         {
-            Intent create = new Intent(this, typeof(BreadActivity));
-            StartActivity(create);
+            Toast.MakeText(this, "You are already in the activity", ToastLength.Short).Show();
         }
     }
 }

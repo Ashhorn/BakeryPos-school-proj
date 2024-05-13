@@ -11,8 +11,15 @@ using System.Text;
 
 namespace wtf.activity
 {
-    internal class splashscreen
+    [Activity(Label = "SplashScreen", Theme = "@style/SplashTheme", MainLauncher =true, NoHistory =true, ConfigurationChanges = Android.Content.PM.ConfigChanges.ScreenSize)]
+    public class SplashScreen : Activity
     {
-
+        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+            Intent intent = new Intent(this, typeof(BreadActivity));
+            StartActivity(intent);
+            // Create your application here
+        }
     }
 }
