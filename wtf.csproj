@@ -67,6 +67,7 @@
     <Compile Include="activity\BreadActivity.cs" />
     <Compile Include="activity\CakeActivity.cs" />
     <Compile Include="activity\DrinkActivity.cs" />
+    <Compile Include="activity\RecieptActivity.cs" />
     <Compile Include="activity\SplashScreen.cs" />
     <Compile Include="activity\yeabro.cs" />
     <Compile Include="MainActivity.cs" />

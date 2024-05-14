@@ -16,22 +16,26 @@ namespace wtf.activity
     [Activity(Label = "DrinkActivity")]
     public class DrinkActivity : Activity
     {
-        int mcount = 0;
-        int ucount = 0;
-        int ccount = 0;
-        int kcount = 0;
-        int scount = 0;
-        int bcount = 0;
-
-        int ncount = 0;
+        int cheesecakecount = 0;
+        int chococakecount = 0;
+        int ubecakecount = 0;
+        int oreocakecount = 0;
+        int carrotcakecount = 0;
+        int nesteacount = 0;
         int cokecount = 0;
-        int rcount = 0;
-        int wcount = 0;
+        int royalcount = 0;
+        int watercount = 0;
         int c2count = 0;
+        int cheesecount = 0;
+        int kwasoncount = 0;
+        int spanishcount = 0;
+        int meatcount = 0;
+        int ubecount = 0;
+        int baguettecount = 0;
         int total = 0;
         TextView totaltxt,textquantitywater,textquantityroyal,textquantityc2,textquantitycoke,textquantitynestea;
         yeabro totalprice;
-        Button breadbtn, cakebtn, drinkbtn, minuswater,pluswater,minusc2,plusc2,minusroyal,plusroyal,minuscoke,pluscoke,minusnestea,plusnestea;
+        Button breadbtn, cakebtn, drinkbtn, minuswater,pluswater,minusc2,plusc2,minusroyal,plusroyal,minuscoke,pluscoke,minusnestea,plusnestea,buttondone;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -46,7 +50,7 @@ namespace wtf.activity
                 return;
             }
             SetContentView(Resource.Layout.DrinkLayout);
-
+            buttondone = FindViewById<Button>(Resource.Id.buttonDone);
             breadbtn = FindViewById<Button>(Resource.Id.button1);
             cakebtn = FindViewById<Button>(Resource.Id.button2);
             drinkbtn = FindViewById<Button>(Resource.Id.button3);
@@ -68,7 +72,7 @@ namespace wtf.activity
             plusnestea = FindViewById<Button>(Resource.Id.plusnestea);
 
 
-
+            buttondone.Click += Buttondone_Click;
             pluswater.Click += Pluswater_Click;
             minuswater.Click += Minuswater_Click;
             plusroyal.Click += Plusroyal_Click;
@@ -84,40 +88,139 @@ namespace wtf.activity
             drinkbtn.Click += Drinkbtn_Click;
 
 
-            RunOnUiThread(() =>
+            if (savedInstanceState != null)
             {
+                cheesecount = savedInstanceState.GetInt("cheesecount");
+                kwasoncount = savedInstanceState.GetInt("kwasoncount");
+                spanishcount = savedInstanceState.GetInt("spanishcount");
+                meatcount = savedInstanceState.GetInt("meatcount");
+                ubecount = savedInstanceState.GetInt("ubecount");
+                baguettecount = savedInstanceState.GetInt("baguettecount");
+                watercount = savedInstanceState.GetInt("watercount");
+                royalcount = savedInstanceState.GetInt("royalcount");
+                cokecount = savedInstanceState.GetInt("cokecount");
+                c2count = savedInstanceState.GetInt("c2count");
+                nesteacount = savedInstanceState.GetInt("nesteacount");
+                carrotcakecount = savedInstanceState.GetInt("carrotcakecount");
+                oreocakecount = savedInstanceState.GetInt("oreocakecount");
+                cheesecakecount = savedInstanceState.GetInt("cheesecakecount");
+                ubecakecount = savedInstanceState.GetInt("ubecakecount");
+                chococakecount = savedInstanceState.GetInt("chococakecount");
+                total = savedInstanceState.GetInt("total");
+
+                // Update UI elements with the restored values
+                textquantityc2.Text = c2count.ToString();
+                textquantitycoke.Text = cokecount.ToString();
+                textquantitynestea.Text = nesteacount.ToString();
+                textquantityroyal.Text = royalcount.ToString();
+                textquantitywater.Text = watercount.ToString();
+
                 totaltxt.Text = total.ToString();
-            });
-
-            string jsonString = Intent.GetStringExtra("Current");
-            if (jsonString != null)
-            {
-                totalprice = JsonConvert.DeserializeObject<yeabro>(jsonString);
-
-                total = totalprice.totalp; // Directly assign total price
             }
+            else
+            {
+                // Handle Intent data
+                string jsonString = Intent.GetStringExtra("Current");
+                if (jsonString != null)
+                {
+                    totalprice = JsonConvert.DeserializeObject<yeabro>(jsonString);
+                    cheesecount = totalprice.txtqtycheese;
+                    kwasoncount = totalprice.txtqtykwason;
+                    spanishcount = totalprice.txtqtyspanish;
+                    meatcount = totalprice.txtqtymeat;
+                    ubecount = totalprice.txtqtyube;
+                    baguettecount = totalprice.txtqtybaguette;
+                    total = totalprice.totalp;
 
+                    // Update UI elements with the restored values
+                    textquantityc2.Text = c2count.ToString();
+                    textquantitycoke.Text = cokecount.ToString();
+                    textquantitynestea.Text = nesteacount.ToString();
+                    textquantityroyal.Text = royalcount.ToString();
+                    textquantitywater.Text = watercount.ToString();
+                    totaltxt.Text = total.ToString();
+                }
+            }
+        }
+        protected override void OnSaveInstanceState(Bundle outState)
+        {
+            base.OnSaveInstanceState(outState);
+            outState.PutInt("cheesecount", cheesecount);
+            outState.PutInt("kwasoncount", kwasoncount);
+            outState.PutInt("spanishcount", spanishcount);
+            outState.PutInt("meatcount", meatcount);
+            outState.PutInt("ubecount", ubecount);
+            outState.PutInt("baguettecount", baguettecount);
+            outState.PutInt("watercount", watercount);
+            outState.PutInt("royalcount", royalcount);
+            outState.PutInt("c2count", c2count);
+            outState.PutInt("cokecount", cokecount);
+            outState.PutInt("nesteacount", nesteacount);
+            outState.PutInt("carrotcakecount", carrotcakecount);
+            outState.PutInt("chococakecount", chococakecount);
+            outState.PutInt("oreocakecount", oreocakecount);
+            outState.PutInt("ubecakecount", ubecakecount);
+            outState.PutInt("cheesecakecount", cheesecakecount);
+            outState.PutInt("total", total);
+        }
+
+        protected override void OnRestoreInstanceState(Bundle savedInstanceState)
+        {
+            base.OnRestoreInstanceState(savedInstanceState);
+            cheesecount = savedInstanceState.GetInt("cheesecount");
+            kwasoncount = savedInstanceState.GetInt("kwasoncount");
+            spanishcount = savedInstanceState.GetInt("spanishcount");
+            meatcount = savedInstanceState.GetInt("meatcount");
+            ubecount = savedInstanceState.GetInt("ubecount");
+            baguettecount = savedInstanceState.GetInt("baguettecount");
+            watercount = savedInstanceState.GetInt("watercount");
+            royalcount = savedInstanceState.GetInt("royalcount");
+            cokecount = savedInstanceState.GetInt("cokecount");
+            c2count = savedInstanceState.GetInt("c2count");
+            nesteacount = savedInstanceState.GetInt("nesteacount");
+            carrotcakecount = savedInstanceState.GetInt("carrotcakecount");
+            chococakecount = savedInstanceState.GetInt("chococakecount");
+            ubecakecount = savedInstanceState.GetInt("ubecakecount");
+            cheesecakecount = savedInstanceState.GetInt("cheesecakecount");
+            oreocakecount = savedInstanceState.GetInt("oreocakecount");
+
+            total = savedInstanceState.GetInt("total");
+
+            // Update UI elements with the restored values
+            textquantityc2.Text = c2count.ToString();
+            textquantitycoke.Text = cokecount.ToString();
+            textquantitynestea.Text = nesteacount.ToString();
+            textquantityroyal.Text = royalcount.ToString();
+            textquantitywater.Text = watercount.ToString();
+
+
+            totaltxt.Text = total.ToString();
+        }
+
+        private void Buttondone_Click(object sender, EventArgs e)
+        {
+            NavigateToActivity(typeof(RecieptActivity));
         }
 
         private void Plusnestea_Click(object sender, EventArgs e)
         {
-            ncount++;
-            int totnestea = ncount * 30;
+            nesteacount++;
+            int totnestea = nesteacount * 30;
             total += 30; // Add the price of one cheese
             totaltxt.Text = total.ToString();
-            textquantitynestea.Text = $"{ncount}";
+            textquantitynestea.Text = $"{nesteacount}";
         }
 
         private void Minusnestea_Click(object sender, EventArgs e)
         {
-            if (ncount > 0)
+            if (nesteacount > 0)
             {
-                ncount--;
+                nesteacount--;
                 int totnestea = c2count * 30;
                 total -= 30; // Subtract the price of one cheese
                 totaltxt.Text = total.ToString();
             }
-            textquantitynestea.Text = $"{ncount}";
+            textquantitynestea.Text = $"{nesteacount}";
         }
 
         private void Minuscoke_Click(object sender, EventArgs e)
@@ -164,44 +267,44 @@ namespace wtf.activity
 
         private void Minusroyal_Click(object sender, EventArgs e)
         {
-            if (rcount > 0)
+            if (royalcount > 0)
             {
-                rcount--;
-                int totroyal = rcount * 25;
+                royalcount--;
+                int totroyal = royalcount * 25;
                 total -= 25; // Subtract the price of one cheese
                 totaltxt.Text = total.ToString();
             }
-            textquantityroyal.Text = $"{rcount}";
+            textquantityroyal.Text = $"{royalcount}";
         }
 
         private void Plusroyal_Click(object sender, EventArgs e)
         {
-            rcount++;
-            int totroyal = rcount * 25;
+            royalcount++;
+            int totroyal = royalcount * 25;
             total += 25; // Add the price of one cheese
             totaltxt.Text = total.ToString();
-            textquantityroyal.Text = $"{rcount}";
+            textquantityroyal.Text = $"{royalcount}";
         }
 
         private void Minuswater_Click(object sender, EventArgs e)
         {
-            if (wcount > 0)
+            if (watercount > 0)
             {
-                wcount--;
-                int totwater = wcount * 15;
+                watercount--;
+                int totwater = watercount * 15;
                 total -= 15; // Subtract the price of one cheese
                 totaltxt.Text = total.ToString();
             }
-            textquantitywater.Text = $"{wcount}";
+            textquantitywater.Text = $"{watercount}";
         }
 
         private void Pluswater_Click(object sender, EventArgs e)
         {
-            wcount++;
-            int totwater = wcount * 15;
+            watercount++;
+            int totwater = watercount * 15;
             total += 15; // Add the price of one cheese
             totaltxt.Text = total.ToString();
-            textquantitywater.Text = $"{wcount}";
+            textquantitywater.Text = $"{watercount}";
         }
 
         private void Drinkbtn_Click(object sender, EventArgs e)
@@ -211,31 +314,41 @@ namespace wtf.activity
 
         private void Cakebtn_Click(object sender, EventArgs e)
         {
-            StartActivity(new Intent(Application.Context, typeof(CakeActivity)));
+            NavigateToActivity(typeof(CakeActivity));
         }
 
         private void Breadbtn_Click(object sender, EventArgs e)
         {
+            NavigateToActivity(typeof(BreadActivity));
+        }
+        private void NavigateToActivity(Type activityType)
+        {
+            Intent intent = new Intent(this, activityType);
+
+            yeabro yeabro = new yeabro()
             {
-                Intent intent = new Intent(this, typeof(BreadActivity));
+                txtqtymeat = meatcount,
+                txtqtyube = ubecount,
+                txtqtykwason = kwasoncount,
+                txtqtybaguette = baguettecount,
+                txtqtycheese = cheesecount,
+                txtqtyspanish = spanishcount,
+                txtqtywater = watercount,
+                txtqtyroyal = royalcount,
+                txtqtyc2 = c2count,
+                txtqtycoke = cokecount,
+                txtqtynestea = nesteacount,
+                txtqtycarrotcake = carrotcakecount,
+                txtqtycheesecake = cheesecakecount,
+                txtqtychococake = chococakecount,
+                txtqtyoreocake = oreocakecount,
+                txtqtyubecake = ubecakecount,
+                totalp = total
+            };
 
-                yeabro yeabro = new yeabro()
-                {
-                    txtqtymeat = mcount,
-                    txtqtyube = ucount,
-                    txtqtykwason = kcount,
-                    txtqtybaguette = bcount,
-                    txtqtycheese = ccount,
-                    txtqtyspanish = scount,
-                    totalp = total
-                };
+            intent.PutExtra("Current", JsonConvert.SerializeObject(yeabro));
 
-                // Add PutExtra method data to intent.    
-                intent.PutExtra("Current", JsonConvert.SerializeObject(yeabro));
-
-                // StartActivity    
-                this.StartActivity(intent);
-            }
+            StartActivity(intent);
         }
     }
 }

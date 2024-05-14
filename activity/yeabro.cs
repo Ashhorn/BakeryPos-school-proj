@@ -20,6 +20,16 @@ namespace wtf.activity
         public int txtqtybaguette { get; set; }
         public int txtqtycheese { get; set; }
         public int txtqtyspanish { get; set; }
-
+        public int txtqtyroyal { get; set; }
+        public int txtqtywater { get; set; }
+        public int txtqtycoke { get; set; }
+        public int txtqtynestea { get; set; }
+        public int txtqtyc2 { get; set; }
+        public int txtqtycarrotcake { get; set; }
+        public int txtqtyoreocake { get; set; }
+        public int txtqtychococake { get; set; }
+        public int txtqtyubecake { get; set; }
+        public int txtqtycheesecake { get; set; }
+        
     }
 }
