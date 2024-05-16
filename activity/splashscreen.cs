@@ -11,7 +11,7 @@ using System.Text;
 
 namespace wtf.activity
 {
-    [Activity(Label = "SplashScreen", Theme = "@style/SplashTheme", MainLauncher =true, NoHistory =true, ConfigurationChanges = Android.Content.PM.ConfigChanges.ScreenSize)]
+    [Activity(Label = "POS", Theme = "@style/SplashTheme", MainLauncher =true, NoHistory =true, ConfigurationChanges = Android.Content.PM.ConfigChanges.ScreenSize)]
     public class SplashScreen : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)

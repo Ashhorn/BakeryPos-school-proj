@@ -143,6 +143,17 @@ namespace wtf.activity
                     meatcount = totalprice.txtqtymeat;
                     ubecount = totalprice.txtqtyube;
                     baguettecount = totalprice.txtqtybaguette;
+                    c2count = totalprice.txtqtyc2;
+                    cokecount = totalprice.txtqtycoke;
+                    watercount = totalprice.txtqtywater;
+                    nesteacount = totalprice.txtqtynestea;
+                    royalcount = totalprice.txtqtyroyal;
+                    chococakecount = totalprice.txtqtychococake;
+                    cheesecakecount = totalprice.txtqtycheesecake;
+                    oreocakecount = totalprice.txtqtyoreocake;
+                    carrotcakecount = totalprice.txtqtycarrotcake;
+                    ubecakecount = totalprice.txtqtyubecake;
+
                     total = totalprice.totalp;
 
                     // Update UI elements with the restored values
