@@ -79,7 +79,7 @@
                             <androidx.cardview.widget.CardView
                                 android:layout_width="70dp"
                                 android:layout_height="90dp"
-                                android:layout_marginRight="200dp"
+                                android:layout_marginRight="250dp"
                                 app:cardBackgroundColor="@android:color/black">
                                  <ImageView
                                      android:layout_width="80dp"
@@ -102,6 +102,20 @@
                      android:layout_marginLeft="100dp"
                      android:gravity="center"
                      android:textSize="20dp"/>
+                    <TextView
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="100dp"
+                        android:layout_marginTop="30dp"
+                        android:textSize="18dp"
+                        android:text="12"
+                    android:id="@+id/waterstock"/>
+                    <TextView
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                    android:layout_marginLeft="90dp"
+                        android:textSize="18dp"
+                    android:text="Stock"/>
                     <Button
                         android:id="@+id/pluswater"
                         android:layout_width="40dp"
@@ -143,7 +157,7 @@
                             <androidx.cardview.widget.CardView
                                 android:layout_width="70dp"
                                 android:layout_height="90dp"
-                                android:layout_marginRight="200dp"
+                                android:layout_marginRight="250dp"
                                 app:cardBackgroundColor="@android:color/black">
                                  <ImageView
                                      android:layout_width="80dp"
@@ -166,6 +180,20 @@
                      android:layout_marginLeft="100dp"
                      android:gravity="center"
                      android:textSize="20dp"/>
+                    <TextView
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="100dp"
+                        android:layout_marginTop="30dp"
+                        android:textSize="18dp"
+                        android:text="13"
+                    android:id="@+id/royalstock"/>
+                    <TextView
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                    android:layout_marginLeft="90dp"
+                        android:textSize="18dp"
+                    android:text="Stock"/>
                     <Button
                         android:id="@+id/plusroyal"  
                         android:layout_width="40dp"
@@ -207,7 +235,7 @@
                             <androidx.cardview.widget.CardView
                                 android:layout_width="70dp"
                                 android:layout_height="90dp"
-                                android:layout_marginRight="200dp"
+                                android:layout_marginRight="250dp"
                                 app:cardBackgroundColor="@android:color/black">
                                  <ImageView
                                      android:layout_width="60dp"
@@ -230,6 +258,20 @@
                      android:layout_marginLeft="100dp"
                      android:gravity="center"
                      android:textSize="20dp"/>
+                    <TextView
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="100dp"
+                        android:layout_marginTop="30dp"
+                        android:textSize="18dp"
+                        android:text="8"
+                    android:id="@+id/cokestock"/>
+                    <TextView
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                    android:layout_marginLeft="90dp"
+                        android:textSize="18dp"
+                    android:text="Stock"/>
                     <Button
                         android:id="@+id/pluscoke" 
                         android:layout_width="40dp"
@@ -271,7 +313,7 @@
                             <androidx.cardview.widget.CardView
                                 android:layout_width="70dp"
                                 android:layout_height="90dp"
-                                android:layout_marginRight="200dp"
+                                android:layout_marginRight="250dp"
                                 app:cardBackgroundColor="@android:color/black">
                                  <ImageView
                                      android:layout_width="80dp"
@@ -294,6 +336,20 @@
                      android:layout_marginLeft="100dp"
                      android:gravity="center"
                      android:textSize="20dp"/>
+                    <TextView
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="100dp"
+                        android:layout_marginTop="30dp"
+                        android:textSize="18dp"
+                        android:text="10"
+                    android:id="@+id/nesteastock"/>
+                    <TextView
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                    android:layout_marginLeft="90dp"
+                        android:textSize="18dp"
+                    android:text="Stock"/>
                     <Button
                         android:id="@+id/plusnestea" 
                         android:layout_width="40dp"
@@ -335,7 +391,7 @@
                             <androidx.cardview.widget.CardView
                                 android:layout_width="70dp"
                                 android:layout_height="90dp"
-                                android:layout_marginRight="200dp"
+                                android:layout_marginRight="250dp"
                                 app:cardBackgroundColor="@android:color/black">
                                  <ImageView
                                      android:layout_width="80dp"
@@ -358,6 +414,20 @@
                      android:layout_marginLeft="100dp"
                      android:gravity="center"
                      android:textSize="20dp"/>
+                    <TextView
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="100dp"
+                        android:layout_marginTop="30dp"
+                        android:textSize="18dp"
+                        android:text="6"
+                    android:id="@+id/c2stock"/>
+                    <TextView
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                    android:layout_marginLeft="90dp"
+                        android:textSize="18dp"
+                    android:text="Stock"/>
                     <Button
                         android:id="@+id/plusc2" 
                         android:layout_width="40dp"

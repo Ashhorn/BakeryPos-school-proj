@@ -30,6 +30,23 @@ namespace wtf.activity
         public int txtqtychococake { get; set; }
         public int txtqtyubecake { get; set; }
         public int txtqtycheesecake { get; set; }
-        
+        public int txtstockbaguette { get; set; }
+        public int txtstockube { get; set; }
+        public int txtstockkwason { get; set; }
+        public int txtstockcheese { get; set; }
+        public int txtstockspanish { get;set; }
+        public int txtstockmeat { get; set; }
+        public int txtstockroyal { get; set; }
+        public int txtstockwater { get; set; }
+        public int txtstockcoke { get; set; }
+        public int txtstocknestea { get; set; }
+        public int txtstockc2 { get; set; }
+        public int txtstockcarrotcake { get; set; }
+        public int txtstockoreocake { get; set; }
+        public int txtstockchococake { get; set; }
+        public int txtstockubecake { get; set; }
+        public int txtstockcheesecake { get; set; }
+
+
     }
 }

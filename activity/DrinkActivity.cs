@@ -32,8 +32,24 @@ namespace wtf.activity
         int meatcount = 0;
         int ubecount = 0;
         int baguettecount = 0;
+        int stockBaguette = 10;
+        int stockKwason = 7;
+        int stockSpanish = 15;
+        int stockUbe = 5;
+        int stockMeat = 8;
+        int stockCheese = 4;
+        int stockcheesecake = 5;
+        int stockubecake = 3;
+        int stockoreocake = 3;
+        int stockcarrotcake = 2;
+        int stockchococake = 6;
+        int stockwater = 12;
+        int stockroyal = 13;
+        int stockcoke = 8;
+        int stocknestea = 10;
+        int stockc2 = 6;
         int total = 0;
-        TextView totaltxt,textquantitywater,textquantityroyal,textquantityc2,textquantitycoke,textquantitynestea;
+        TextView totaltxt,textquantitywater,textquantityroyal,textquantityc2,textquantitycoke,textquantitynestea,waterstock,nesteastock,c2stock,royalstock,cokestock;
         yeabro totalprice;
         Button breadbtn, cakebtn, drinkbtn, minuswater,pluswater,minusc2,plusc2,minusroyal,plusroyal,minuscoke,pluscoke,minusnestea,plusnestea,buttondone;
         protected override void OnCreate(Bundle savedInstanceState)
@@ -70,6 +86,11 @@ namespace wtf.activity
             textquantitynestea = FindViewById<TextView>(Resource.Id.textquantitynestea);
             minusnestea = FindViewById<Button>(Resource.Id.minusnestea);
             plusnestea = FindViewById<Button>(Resource.Id.plusnestea);
+            nesteastock = FindViewById<TextView>(Resource.Id.nesteastock);
+            waterstock = FindViewById<TextView>(Resource.Id.waterstock);
+            c2stock = FindViewById<TextView>(Resource.Id.c2stock);
+            cokestock = FindViewById<TextView>(Resource.Id.cokestock);
+            royalstock = FindViewById<TextView>(Resource.Id.royalstock);
 
 
             buttondone.Click += Buttondone_Click;
@@ -106,6 +127,22 @@ namespace wtf.activity
                 cheesecakecount = savedInstanceState.GetInt("cheesecakecount");
                 ubecakecount = savedInstanceState.GetInt("ubecakecount");
                 chococakecount = savedInstanceState.GetInt("chococakecount");
+                stockBaguette = savedInstanceState.GetInt("stockbaguette");
+                stockMeat = savedInstanceState.GetInt("stockmeat");
+                stockCheese = savedInstanceState.GetInt("stockcheese");
+                stockKwason = savedInstanceState.GetInt("stockkwason");
+                stockUbe = savedInstanceState.GetInt("stockube");
+                stockSpanish = savedInstanceState.GetInt("stockspanish");
+                stockc2 = savedInstanceState.GetInt("stockc2");
+                stockcoke = savedInstanceState.GetInt("stockcoke");
+                stocknestea = savedInstanceState.GetInt("stocknestea");
+                stockroyal = savedInstanceState.GetInt("stockroyal");
+                stockwater = savedInstanceState.GetInt("stockwater");
+                stockcheesecake = savedInstanceState.GetInt("stockcheesecake");
+                stockubecake = savedInstanceState.GetInt("stockubecake");
+                stockchococake = savedInstanceState.GetInt("stockchococake");
+                stockoreocake = savedInstanceState.GetInt("stockoreocake");
+                stockcarrotcake = savedInstanceState.GetInt("stockcarrotcake");
                 total = savedInstanceState.GetInt("total");
 
                 // Update UI elements with the restored values
@@ -140,6 +177,22 @@ namespace wtf.activity
                     oreocakecount = totalprice.txtqtyoreocake;
                     carrotcakecount = totalprice.txtqtycarrotcake;
                     ubecakecount = totalprice.txtqtyubecake;
+                    stockBaguette -= baguettecount;
+                    stockMeat -= meatcount;
+                    stockCheese -= cheesecount;
+                    stockKwason -= kwasoncount;
+                    stockSpanish -= spanishcount;
+                    stockUbe -= ubecount;
+                    stockc2 -= c2count;
+                    stockwater -= watercount;
+                    stockroyal -= royalcount;
+                    stockcoke -= cokecount;
+                    stocknestea -= nesteacount;
+                    stockchococake -= chococakecount;
+                    stockcheesecake -= cheesecakecount;
+                    stockubecake -= ubecakecount;
+                    stockoreocake -= oreocakecount;
+                    stockcarrotcake -= carrotcakecount;
 
                     total = totalprice.totalp;
 
@@ -149,6 +202,12 @@ namespace wtf.activity
                     textquantitynestea.Text = nesteacount.ToString();
                     textquantityroyal.Text = royalcount.ToString();
                     textquantitywater.Text = watercount.ToString();
+                    waterstock.Text = stockwater.ToString();
+                    c2stock.Text = stockc2.ToString();
+                    royalstock.Text = stockroyal.ToString();
+                    cokestock.Text = stockcoke.ToString();
+                    nesteastock.Text = stocknestea.ToString();
+
                     totaltxt.Text = total.ToString();
                 }
             }
@@ -215,10 +274,18 @@ namespace wtf.activity
 
         private void Plusnestea_Click(object sender, EventArgs e)
         {
-            nesteacount++;
-            int totnestea = nesteacount * 30;
-            total += 30; // Add the price of one cheese
-            totaltxt.Text = total.ToString();
+            if (stocknestea > 0) // Check if there's stock available
+            {
+                nesteacount++;
+                total += 30;
+                totaltxt.Text = total.ToString();
+                stocknestea--; // Decrease stock when a baguette is added
+                nesteastock.Text = $"{stocknestea}";
+            }
+            else
+            {
+                Toast.MakeText(this, "No more nestea in stock", ToastLength.Short).Show();
+            }
             textquantitynestea.Text = $"{nesteacount}";
         }
 
@@ -227,9 +294,10 @@ namespace wtf.activity
             if (nesteacount > 0)
             {
                 nesteacount--;
-                int totnestea = c2count * 30;
-                total -= 30; // Subtract the price of one cheese
+                total -= 30;
                 totaltxt.Text = total.ToString();
+                stocknestea++; // Increase stock when a baguette is removed
+                nesteastock.Text = $"{stocknestea}";
             }
             textquantitynestea.Text = $"{nesteacount}";
         }
@@ -239,19 +307,28 @@ namespace wtf.activity
             if (cokecount > 0)
             {
                 cokecount--;
-                int totcoke = cokecount * 25;
-                total -= 25; // Subtract the price of one cheese
+                total -= 25;
                 totaltxt.Text = total.ToString();
+                stockcoke++; // Increase stock when a baguette is removed
+                cokestock.Text = $"{stockcoke}";
             }
             textquantitycoke.Text = $"{cokecount}";
         }
 
         private void Pluscoke_Click(object sender, EventArgs e)
         {
-            cokecount++;
-            int totcoke = cokecount * 25;
-            total += 25; // Add the price of one cheese
-            totaltxt.Text = total.ToString();
+            if (stockcoke > 0) // Check if there's stock available
+            {
+                cokecount++;
+                total += 25;
+                totaltxt.Text = total.ToString();
+                stockcoke--; // Decrease stock when a baguette is added
+                cokestock.Text = $"{stockcoke}";
+            }
+            else
+            {
+                Toast.MakeText(this, "No more coke in stock", ToastLength.Short).Show();
+            }
             textquantitycoke.Text = $"{cokecount}";
         }
 
@@ -260,19 +337,28 @@ namespace wtf.activity
             if (c2count > 0)
             {
                 c2count--;
-                int totc2 = c2count * 25;
-                total -= 25; // Subtract the price of one cheese
+                total -= 25;
                 totaltxt.Text = total.ToString();
+                stockc2++; // Increase stock when a baguette is removed
+                c2stock.Text = $"{stockc2}";
             }
             textquantityc2.Text = $"{c2count}";
         }
 
         private void Plusc2_Click(object sender, EventArgs e)
         {
-            c2count++;
-            int totc2 = c2count * 25;
-            total += 25; // Add the price of one cheese
-            totaltxt.Text = total.ToString();
+            if (stockc2 > 0) // Check if there's stock available
+            {
+                c2count++;
+                total += 25;
+                totaltxt.Text = total.ToString();
+                stockc2--; // Decrease stock when a baguette is added
+                c2stock.Text = $"{stockc2}";
+            }
+            else
+            {
+                Toast.MakeText(this, "No more c2 in stock", ToastLength.Short).Show();
+            }
             textquantityc2.Text = $"{c2count}";
         }
 
@@ -281,19 +367,28 @@ namespace wtf.activity
             if (royalcount > 0)
             {
                 royalcount--;
-                int totroyal = royalcount * 25;
-                total -= 25; // Subtract the price of one cheese
+                total -= 25;
                 totaltxt.Text = total.ToString();
+                stockroyal++; // Increase stock when a baguette is removed
+                royalstock.Text = $"{stockroyal}";
             }
             textquantityroyal.Text = $"{royalcount}";
         }
 
         private void Plusroyal_Click(object sender, EventArgs e)
         {
-            royalcount++;
-            int totroyal = royalcount * 25;
-            total += 25; // Add the price of one cheese
-            totaltxt.Text = total.ToString();
+            if (stockroyal > 0) // Check if there's stock available
+            {
+                royalcount++;
+                total += 25;
+                totaltxt.Text = total.ToString();
+                stockroyal--; // Decrease stock when a baguette is added
+                royalstock.Text = $"{stockroyal}";
+            }
+            else
+            {
+                Toast.MakeText(this, "No more royal in stock", ToastLength.Short).Show();
+            }
             textquantityroyal.Text = $"{royalcount}";
         }
 
@@ -302,19 +397,28 @@ namespace wtf.activity
             if (watercount > 0)
             {
                 watercount--;
-                int totwater = watercount * 15;
-                total -= 15; // Subtract the price of one cheese
+                total -= 15;
                 totaltxt.Text = total.ToString();
+                stockwater++; // Increase stock when a baguette is removed
+                waterstock.Text = $"{stockwater}";
             }
             textquantitywater.Text = $"{watercount}";
         }
 
         private void Pluswater_Click(object sender, EventArgs e)
         {
-            watercount++;
-            int totwater = watercount * 15;
-            total += 15; // Add the price of one cheese
-            totaltxt.Text = total.ToString();
+            if (stockwater > 0) // Check if there's stock available
+            {
+                watercount++;
+                total += 15;
+                totaltxt.Text = total.ToString();
+                stockwater--; // Decrease stock when a baguette is added
+                waterstock.Text = $"{stockwater}";
+            }
+            else
+            {
+                Toast.MakeText(this, "No more water in stock", ToastLength.Short).Show();
+            }
             textquantitywater.Text = $"{watercount}";
         }
 
@@ -354,6 +458,23 @@ namespace wtf.activity
                 txtqtychococake = chococakecount,
                 txtqtyoreocake = oreocakecount,
                 txtqtyubecake = ubecakecount,
+
+                txtstockbaguette = stockBaguette,
+                txtstockcheese = stockCheese,
+                txtstockkwason = stockKwason,
+                txtstockube = stockUbe,
+                txtstockspanish = stockSpanish,
+                txtstockmeat = stockMeat,
+                txtstockwater = stockwater,
+                txtstockc2 = stockc2,
+                txtstockroyal = stockroyal,
+                txtstockcoke = stockcoke,
+                txtstocknestea = stocknestea,
+                txtstockcheesecake = stockcheesecake,
+                txtstockcarrotcake = stockcarrotcake,
+                txtstockchococake = stockchococake,
+                txtstockoreocake = stockoreocake,
+                txtstockubecake = stockubecake,
                 totalp = total
             };
 

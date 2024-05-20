@@ -32,8 +32,24 @@ namespace wtf.activity
         int meatcount = 0;
         int ubecount = 0;
         int baguettecount = 0;
+        int stockBaguette = 10;
+        int stockKwason = 7;
+        int stockSpanish = 15;
+        int stockUbe = 5;
+        int stockMeat = 8;
+        int stockCheese = 4;
+        int stockcheesecake = 5;
+        int stockubecake = 3;
+        int stockoreocake = 3;
+        int stockcarrotcake = 2;
+        int stockchococake = 6;
+        int stockwater = 12;
+        int stockroyal = 13;
+        int stockcoke = 8;
+        int stocknestea = 10;
+        int stockc2 = 6;
         int total = 0;
-        TextView totaltxt, textquantitycheesec,textquantityubec,textquantityoreoc,textquantitycarrotc,textquantitychocolatec;
+        TextView totaltxt, textquantitycheesec,textquantityubec,textquantityoreoc,textquantitycarrotc,textquantitychocolatec,oreocakestock,cheesecakestock,carrotcakestock,chococakestock,ubecakestock;
         yeabro totalprice;
         Button breadbtn, cakebtn, drinkbtn, pluscheesec,minuscheesec,plusubec,minusubec,plusoreoc,minusoreoc,pluscarrotc,minuscarrotc,pluschocolatec,minuschocolatec,buttondone;
         protected override void OnCreate(Bundle savedInstanceState)
@@ -60,6 +76,11 @@ namespace wtf.activity
             textquantitychocolatec = FindViewById<TextView>(Resource.Id.textquantitychococake);
             pluschocolatec = FindViewById<Button>(Resource.Id.pluschococake);
             minuschocolatec = FindViewById<Button>(Resource.Id.minuschococake);
+            oreocakestock = FindViewById<TextView>(Resource.Id.oreocakestock);
+            cheesecakestock = FindViewById<TextView>(Resource.Id.cheesecakestock);
+            ubecakestock = FindViewById<TextView>(Resource.Id.ubecakestock);
+            chococakestock = FindViewById<TextView>(Resource.Id.chococakestock);
+            carrotcakestock = FindViewById<TextView>(Resource.Id.carrotcakestock);
 
             buttondone.Click += Buttondone_Click;
             pluscheesec.Click += Pluscheesec_Click;
@@ -95,6 +116,22 @@ namespace wtf.activity
                 cheesecakecount = savedInstanceState.GetInt("cheesecakecount");
                 ubecakecount = savedInstanceState.GetInt("ubecakecount");
                 chococakecount = savedInstanceState.GetInt("chococakecount");
+                stockBaguette = savedInstanceState.GetInt("stockbaguette");
+                stockMeat = savedInstanceState.GetInt("stockmeat");
+                stockCheese = savedInstanceState.GetInt("stockcheese");
+                stockKwason = savedInstanceState.GetInt("stockkwason");
+                stockUbe = savedInstanceState.GetInt("stockube");
+                stockSpanish = savedInstanceState.GetInt("stockspanish");
+                stockc2 = savedInstanceState.GetInt("stockc2");
+                stockcoke = savedInstanceState.GetInt("stockcoke");
+                stocknestea = savedInstanceState.GetInt("stocknestea");
+                stockroyal = savedInstanceState.GetInt("stockroyal");
+                stockwater = savedInstanceState.GetInt("stockwater");
+                stockcheesecake = savedInstanceState.GetInt("stockcheesecake");
+                stockubecake = savedInstanceState.GetInt("stockubecake");
+                stockchococake = savedInstanceState.GetInt("stockchococake");
+                stockoreocake = savedInstanceState.GetInt("stockoreocake");
+                stockcarrotcake = savedInstanceState.GetInt("stockcarrotcake");
                 total = savedInstanceState.GetInt("total");
 
                 // Update UI elements with the restored values
@@ -129,6 +166,22 @@ namespace wtf.activity
                     oreocakecount = totalprice.txtqtyoreocake;
                     carrotcakecount = totalprice.txtqtycarrotcake;
                     ubecakecount = totalprice.txtqtyubecake;
+                    stockBaguette -= baguettecount;
+                    stockMeat -= meatcount;
+                    stockCheese -= cheesecount;
+                    stockKwason -= kwasoncount;
+                    stockSpanish -= spanishcount;
+                    stockUbe -= ubecount;
+                    stockc2 -= c2count;
+                    stockwater -= watercount;
+                    stockroyal -= royalcount;
+                    stockcoke -= cokecount;
+                    stocknestea -= nesteacount;
+                    stockchococake -= chococakecount;
+                    stockcheesecake -= cheesecakecount;
+                    stockubecake -= ubecakecount;
+                    stockoreocake -= oreocakecount;
+                    stockcarrotcake -= carrotcakecount;
 
                     total = totalprice.totalp;
 
@@ -138,6 +191,12 @@ namespace wtf.activity
                     textquantityubec.Text = ubecakecount.ToString();
                     textquantitychocolatec.Text = chococakecount.ToString();
                     textquantityoreoc.Text = oreocakecount.ToString();
+                    oreocakestock.Text = stockoreocake.ToString();
+                    carrotcakestock.Text = stockcarrotcake.ToString();
+                    chococakestock.Text = stockchococake.ToString();
+                    ubecakestock.Text = stockubecake.ToString();
+                    cheesecakestock.Text = stockcheesecake.ToString();
+
                     totaltxt.Text = total.ToString();
                 }
             }
@@ -207,19 +266,28 @@ namespace wtf.activity
             if (chococakecount > 0)
             {
                 chococakecount--;
-                int totcheese = chococakecount * 200;
-                total -= 200; // Subtract the price of one cheese
+                total -= 200;
                 totaltxt.Text = total.ToString();
+                stockchococake++; // Increase stock when a baguette is removed
+                chococakestock.Text = $"{stockchococake}";
             }
             textquantitychocolatec.Text = $"{chococakecount}";
         }
 
         private void Pluschocolatec_Click(object sender, EventArgs e)
         {
-            chococakecount++;
-            int totcheese = chococakecount * 200;
-            total += 200; // Add the price of one cheese
-            totaltxt.Text = total.ToString();
+            if (stockchococake > 0) // Check if there's stock available
+            {
+                chococakecount++;
+                total += 200;
+                totaltxt.Text = total.ToString();
+                stockchococake--; // Decrease stock when a baguette is added
+                chococakestock.Text = $"{stockchococake}";
+            }
+            else
+            {
+                Toast.MakeText(this, "No more chocolate cake in stock", ToastLength.Short).Show();
+            }
             textquantitychocolatec.Text = $"{chococakecount}";
         }
 
@@ -228,39 +296,58 @@ namespace wtf.activity
             if (carrotcakecount > 0)
             {
                 carrotcakecount--;
-                int totcheese = carrotcakecount * 200;
-                total -= 200; // Subtract the price of one cheese
+                total -= 200;
                 totaltxt.Text = total.ToString();
+                stockcarrotcake++; // Increase stock when a baguette is removed
+                carrotcakestock.Text = $"{stockcarrotcake}";
             }
             textquantitycarrotc.Text = $"{carrotcakecount}";
         }
 
         private void Pluscarrotc_Click(object sender, EventArgs e)
         {
-            carrotcakecount++;
-            int totcheese = carrotcakecount * 200;
-            total += 200; // Add the price of one cheese
-            totaltxt.Text = total.ToString();
+            if (stockcarrotcake > 0) // Check if there's stock available
+            {
+                carrotcakecount++;
+                total += 200;
+                totaltxt.Text = total.ToString();
+                stockcarrotcake--; // Decrease stock when a baguette is added
+                carrotcakestock.Text = $"{stockcarrotcake}";
+            }
+            else
+            {
+                Toast.MakeText(this, "No more carrot cake in stock", ToastLength.Short).Show();
+            }
             textquantitycarrotc.Text = $"{carrotcakecount}";
         }
+
         private void Minusoreoc_Click(object sender, EventArgs e)
         {
             if (oreocakecount > 0)
             {
                 oreocakecount--;
-                int totcheese = oreocakecount * 200;
-                total -= 200; // Subtract the price of one cheese
+                total -= 200;
                 totaltxt.Text = total.ToString();
+                stockoreocake++; // Increase stock when a baguette is removed
+                oreocakestock.Text = $"{stockoreocake}";
             }
             textquantityoreoc.Text = $"{oreocakecount}";
         }
 
         private void Plusoreoc_Click(object sender, EventArgs e)
         {
-            oreocakecount++;
-            int totcheese = oreocakecount * 200;
-            total += 200; // Add the price of one cheese
-            totaltxt.Text = total.ToString();
+            if (stockoreocake > 0) // Check if there's stock available
+            {
+                oreocakecount++;
+                total += 200;
+                totaltxt.Text = total.ToString();
+                stockoreocake--; // Decrease stock when a baguette is added
+                oreocakestock.Text = $"{stockoreocake}";
+            }
+            else
+            {
+                Toast.MakeText(this, "No more oreo cake in stock", ToastLength.Short).Show();
+            }
             textquantityoreoc.Text = $"{oreocakecount}";
         }
 
@@ -269,19 +356,28 @@ namespace wtf.activity
             if (ubecakecount > 0)
             {
                 ubecakecount--;
-                int totcheese = ubecakecount * 200;
-                total -= 200; // Subtract the price of one cheese
+                total -= 200;
                 totaltxt.Text = total.ToString();
+                stockubecake++; // Increase stock when a baguette is removed
+                ubecakestock.Text = $"{stockubecake}";
             }
             textquantityubec.Text = $"{ubecakecount}";
         }
 
         private void Plusubec_Click(object sender, EventArgs e)
         {
-            ubecakecount++;
-            int totcheese = ubecakecount * 200;
-            total += 200; // Add the price of one cheese
-            totaltxt.Text = total.ToString();
+            if (stockubecake > 0) // Check if there's stock available
+            {
+                ubecakecount++;
+                total += 200;
+                totaltxt.Text = total.ToString();
+                stockubecake--; // Decrease stock when a baguette is added
+                ubecakestock.Text = $"{stockubecake}";
+            }
+            else
+            {
+                Toast.MakeText(this, "No more ube cake in stock", ToastLength.Short).Show();
+            }
             textquantityubec.Text = $"{ubecakecount}";
         }
 
@@ -290,19 +386,28 @@ namespace wtf.activity
             if (cheesecakecount > 0)
             {
                 cheesecakecount--;
-                int totcheese = cheesecakecount * 200;
-                total -= 200; // Subtract the price of one cheese
+                total -= 200;
                 totaltxt.Text = total.ToString();
+                stockcheesecake++; // Increase stock when a baguette is removed
+                cheesecakestock.Text = $"{stockcheesecake}";
             }
             textquantitycheesec.Text = $"{cheesecakecount}";
         }
 
         private void Pluscheesec_Click(object sender, EventArgs e)
         {
-            cheesecakecount++;
-            int totcheese = cheesecakecount * 200;
-            total += 200; // Add the price of one cheese
-            totaltxt.Text = total.ToString();
+            if (stockcheesecake > 0) // Check if there's stock available
+            {
+                cheesecakecount++;
+                total += 200;
+                totaltxt.Text = total.ToString();
+                stockcheesecake--; // Decrease stock when a baguette is added
+                cheesecakestock.Text = $"{stockcheesecake}";
+            }
+            else
+            {
+                Toast.MakeText(this, "No more cheese cake in stock", ToastLength.Short).Show();
+            }
             textquantitycheesec.Text = $"{cheesecakecount}";
         }
 
@@ -342,6 +447,23 @@ namespace wtf.activity
                 txtqtychococake = chococakecount,
                 txtqtyoreocake = oreocakecount,
                 txtqtyubecake = ubecakecount,
+
+                txtstockbaguette = stockBaguette,
+                txtstockcheese = stockCheese,
+                txtstockkwason = stockKwason,
+                txtstockube = stockUbe,
+                txtstockspanish = stockSpanish,
+                txtstockmeat = stockMeat,
+                txtstockwater = stockwater,
+                txtstockc2 = stockc2,
+                txtstockroyal = stockroyal,
+                txtstockcoke = stockcoke,
+                txtstocknestea = stocknestea,
+                txtstockcheesecake = stockcheesecake,
+                txtstockcarrotcake = stockcarrotcake,
+                txtstockchococake = stockchococake,
+                txtstockoreocake = stockoreocake,
+                txtstockubecake = stockubecake,
                 totalp = total
             };
 
